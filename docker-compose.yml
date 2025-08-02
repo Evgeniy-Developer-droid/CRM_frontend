@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: crm_frontend
+    restart: always
+    env_file:
+      - .env
+    expose:
+      - "127.0.0.1:3000:3000"
+    networks:
+      - crm_network
+
+networks:
+  crm_network:
+    driver: bridge
